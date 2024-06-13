@@ -11,4 +11,5 @@ export interface FindAllPetsFilter {
 export interface PetsRepository {
   register(data: Prisma.PetUncheckedCreateInput): Promise<Pet>
   findAll(filter: FindAllPetsFilter): Promise<Pet[]>
+  findById(id: string): Promise<Pet | null>
 }
