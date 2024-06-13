@@ -2,6 +2,7 @@ import { InMemoryOrgsRepository } from '@/repositories/in-memory/in-memory-orgs-
 import { beforeEach, describe, expect, it } from 'vitest'
 import { AuthenticateUseCase } from './authenticate'
 import { hash } from 'bcryptjs'
+import { InvalidCredentialsError } from './errors/invalid-credetials-error'
 
 let orgsRepository: InMemoryOrgsRepository
 let sut: AuthenticateUseCase
@@ -57,7 +58,7 @@ describe('Authenticate Use Case', () => {
         email: 'john@teste.com',
         password: '123456',
       }),
-    ).rejects.toBeInstanceOf(Error)
+    ).rejects.toBeInstanceOf(InvalidCredentialsError)
   })
 
   it('should not be able to authenticate with wrong password', async () => {
@@ -81,6 +82,6 @@ describe('Authenticate Use Case', () => {
         email: 'teste@teste.com',
         password: '123',
       }),
-    ).rejects.toBeInstanceOf(Error)
+    ).rejects.toBeInstanceOf(InvalidCredentialsError)
   })
 })

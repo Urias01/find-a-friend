@@ -1,6 +1,7 @@
 import { OrgsRepository } from '@/repositories/orgs-repository'
 import { Org } from '@prisma/client'
 import { compare } from 'bcryptjs'
+import { InvalidCredentialsError } from './errors/invalid-credetials-error'
 
 interface AuthenticateUseCaseRequest {
   email: string
@@ -21,13 +22,13 @@ export class AuthenticateUseCase {
     const org = await this.orgsRepository.findByEmail(email)
 
     if (!org) {
-      throw new Error('Invalid email or password')
+      throw new InvalidCredentialsError()
     }
 
     const isPasswordCorrect = await compare(password, org.password)
 
     if (!isPasswordCorrect) {
-      throw new Error('Invalid email or password')
+      throw new InvalidCredentialsError()
     }
 
     return { org }
