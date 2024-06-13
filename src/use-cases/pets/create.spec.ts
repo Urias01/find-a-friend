@@ -9,10 +9,10 @@ let petsRepository: InMemoryPetsRepository
 let orgsRepository: InMemoryOrgsRepository
 let sut: CreateUseCase
 
-describe('Create Use Case', () => {
+describe('Create Pet Use Case', () => {
   beforeEach(async () => {
-    petsRepository = new InMemoryPetsRepository()
     orgsRepository = new InMemoryOrgsRepository()
+    petsRepository = new InMemoryPetsRepository(orgsRepository)
     sut = new CreateUseCase(petsRepository, orgsRepository)
 
     orgsRepository.register({
