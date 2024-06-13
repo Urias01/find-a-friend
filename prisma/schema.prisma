@@ -36,17 +36,17 @@ model Org {
 }
 
 model Pet {
-  id                String @id @default(uuid())
-  name              String
-  about             String
-  age               String
-  size              String
-  energyLevel       String
-  independenceLevel String
-  environment       String
+  id                 String @id @default(uuid())
+  name               String
+  about              String
+  age                String
+  size               String
+  energy_level       String
+  independence_level String
+  environment        String
 
-  orgId String
-  org   Org    @relation(fields: [orgId], references: [id])
+  org_id String
+  org    Org    @relation(fields: [org_id], references: [id])
 
   @@map("pets")
 }
