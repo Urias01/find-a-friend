@@ -36,7 +36,7 @@ model Org {
 }
 
 model Pet {
-  id                 String @id @default(uuid())
+  id                 String  @id @default(uuid())
   name               String
   about              String
   age                String
@@ -44,6 +44,7 @@ model Pet {
   energy_level       String
   independence_level String
   environment        String
+  was_adopted        Boolean
 
   org_id String
   org    Org    @relation(fields: [org_id], references: [id])

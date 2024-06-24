@@ -19,6 +19,7 @@ export class InMemoryPetsRepository implements PetsRepository {
       independence_level: data.independence_level,
       environment: data.environment,
       org_id: data.org_id,
+      was_adopted: data.was_adopted,
     }
 
     this.items.push(pet)

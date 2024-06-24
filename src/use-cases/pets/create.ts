@@ -12,6 +12,7 @@ interface CreateUseCaseRequest {
   independence_level: string
   environment: string
   org_id: string
+  was_adopted: boolean
 }
 
 interface CreateUseCaseResponse {
@@ -33,6 +34,7 @@ export class CreateUseCase {
     independence_level,
     environment,
     org_id,
+    was_adopted,
   }: CreateUseCaseRequest): Promise<CreateUseCaseResponse> {
     const org = await this.orgsRepository.findById(org_id)
 
@@ -49,6 +51,7 @@ export class CreateUseCase {
       independence_level,
       environment,
       org_id,
+      was_adopted,
     })
 
     return { pet }

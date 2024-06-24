@@ -42,6 +42,7 @@ describe('Search Pet Use Case', () => {
       independence_level: 'Média',
       environment: 'Teste',
       org_id: 'org-01',
+      was_adopted: false,
     })
 
     petsRepository.items.push({
@@ -54,6 +55,7 @@ describe('Search Pet Use Case', () => {
       independence_level: 'Alta',
       environment: 'Teste',
       org_id: 'org-01',
+      was_adopted: false,
     })
 
     petsRepository.items.push({
@@ -66,6 +68,7 @@ describe('Search Pet Use Case', () => {
       independence_level: 'Baixa',
       environment: 'Teste',
       org_id: 'org-01',
+      was_adopted: true,
     })
   })
 

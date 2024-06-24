@@ -44,6 +44,7 @@ describe('Create Pet Use Case', () => {
       independence_level: 'Teste',
       environment: 'Teste',
       org_id: 'org-01',
+      was_adopted: false,
     })
 
     expect(pet.id).toEqual(expect.any(String))
@@ -60,6 +61,7 @@ describe('Create Pet Use Case', () => {
         independence_level: 'Teste',
         environment: 'Teste',
         org_id: 'org-02',
+        was_adopted: false,
       }),
     ).rejects.toBeInstanceOf(ResourceNotFoundError)
   })

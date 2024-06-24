@@ -9,7 +9,7 @@ let petsRepository: InMemoryPetsRepository
 let orgsRepository: InMemoryOrgsRepository
 let sut: GetPetUseCase
 
-describe('Create Pet Use Case', () => {
+describe('Get Pet Use Case', () => {
   beforeEach(async () => {
     orgsRepository = new InMemoryOrgsRepository()
     petsRepository = new InMemoryPetsRepository(orgsRepository)
@@ -43,6 +43,7 @@ describe('Create Pet Use Case', () => {
       independence_level: 'Média',
       environment: 'Teste',
       org_id: 'org-01',
+      was_adopted: false,
     })
   })
 
