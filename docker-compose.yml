@@ -4,11 +4,36 @@
 version: '3'
 
 services:
+  api-find-a-friend:
+    image: node:18-alpine3.16
+    working_dir: /usr/src/app
+    ports:
+      - 3333:3333
+    command: >
+      sh -c "npm install && npx prisma generate && npm run dev"
+    init: true
+    volumes:
+      - .:/usr/src/app
+    depends_on:
+     - api-solid-pg
+    networks:
+      - find-a-friend-network1
+
   api-solid-pg:
+    container_name: postgres
     image: bitnami/postgresql
     ports:
       - 5431:5432
     environment:
-      - POSTGRESQL_USERNAME=docker
-      - POSTGRESQL_PASSWORD=docker
+      - POSTGRESQL_USERNAME=${DB_USER}
+      - POSTGRESQL_PASSWORD=${DB_PASSWORD}
       - POSTGRESQL_DATABASE=findafriendapi
+    networks:
+      - find-a-friend-network1
+
+volumes:
+  api-solid-pg:
+
+networks:
+  find-a-friend-network1:
+    driver: bridge
